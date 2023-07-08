@@ -30,3 +30,15 @@ void Fraesung::output(std::ostream &os) const {
     Komponente::output(os);
     os << " und Endpunkt: (" << getEndX() << ", " << getEndY() << "), Durchmesser: " << getDiameter();
 }
+
+double Fraesung::calcTotalPath() const {
+    return 2 * getLength();
+}
+
+QJsonObject Fraesung::toJson() const {
+    auto jo = Bohrung::toJson();
+    jo["type"] = "Fraesung";
+    jo["angle"] = getAngle();
+    jo["length"] = getLength();
+    return jo;
+}

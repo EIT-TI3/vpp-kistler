@@ -2,7 +2,7 @@
 
 Bohrung::Bohrung(double x_, double y_, double diam): Komponente(x_, y_), diameter(diam) {
     if (diameter <= 0) diameter = 6.;
-};
+}
 
 Bohrung::~Bohrung() = default;
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22.1)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 
 project(Praktikum1)
 add_executable(Praktikum1 main.cpp komponente.h komponente.cpp bohrung.h bohrung.cpp fraesung.h fraesung.cpp komponentenList.h komponentenList.cpp)

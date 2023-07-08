@@ -2,7 +2,7 @@
 
 Bohrung::Bohrung(double x_, double y_, double diam): Komponente(x_, y_), diameter(diam) {
     if (diameter <= 0) diameter = 6.;
-};
+}
 
 Bohrung::~Bohrung() = default;
 
@@ -14,4 +14,11 @@ void Bohrung::output(std::ostream &os) const {
     os << "Bohrung: ";
     Komponente::output(os);
     os << ", Durchmesser: " << getDiameter();
+}
+
+QJsonObject Bohrung::toJson() const {
+    auto jo = Komponente::toJson();
+    jo["type"] = "Bohrung";
+    jo["diameter"] = getDiameter();
+    return jo;
 }

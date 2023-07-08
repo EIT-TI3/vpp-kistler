@@ -9,7 +9,7 @@ private:
     double y;
 public:
     explicit Komponente(double xPos=0.0, double yPos=0.0);
-    ~Komponente();
+    virtual ~Komponente();
     double getX() const;
     double getY() const;
 

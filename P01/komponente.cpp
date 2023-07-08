@@ -16,6 +16,6 @@ double Komponente::getY() const {
 }
 
 void Komponente::output(std::ostream &os) const {
-    os << "(" << x << ", " << y << ")";
+    os << "(" << getX() << ", " << getY() << ")";
 }
 

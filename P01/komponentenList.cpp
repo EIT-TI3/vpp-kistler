@@ -11,11 +11,11 @@ int KomponentenList::size() const {
     return counter;
 }
 
-KomponentenElement *KomponentenList::end() {
+KomponentenElement *KomponentenList::end() const {
     return nullptr;
 }
 
-KomponentenElement *KomponentenList::begin() {
+KomponentenElement *KomponentenList::begin() const {
     return first;
 }
 
@@ -35,21 +35,19 @@ void KomponentenList::push_back(Komponente *k) {
     counter++;
 }
 
-KomponentenElement *KomponentenList::getElement(int pos) {
+KomponentenElement *KomponentenList::getElement(int pos) const {
     if (pos < 0 or pos > counter - 1) return nullptr;
 
     auto ke = first;
 
-    for (int i = 0; i < pos; i++) {
-        if (ke == nullptr) break;
-
+    for (int i = 0; i < pos && ke != nullptr; i++) {
         ke = ke->next;
     }
     return ke;
 }
 
 
-const Komponente *KomponentenList::at(int pos) {
+const Komponente *KomponentenList::at(int pos) const {
 
     auto ke = getElement(pos);
     return ke == nullptr? nullptr: ke->k;
@@ -66,6 +64,7 @@ int KomponentenList::erase(int pos) {
     if (counter == 1) {
         first = nullptr;
     }
+
     else if (ke == first) {
         first = ke->next;
         ke_next->before = nullptr;
@@ -85,10 +84,11 @@ int KomponentenList::erase(int pos) {
 
 KomponentenList::~KomponentenList() {
     auto ke = first;
-    for (int i = 0; i < counter; i++) {
-        if (ke == nullptr) break;
+    for (int i = 0; i < counter && ke != nullptr; i++) {
         auto ke_next = ke->next;
         delete ke;
         ke = ke_next;
     }
+    first = nullptr;
+    counter = 0;
 }
